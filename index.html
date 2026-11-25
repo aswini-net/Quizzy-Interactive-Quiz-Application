@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzy - Challenge Your Mind. Test Your Knowledge.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-background">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="logo-container" id="headerLogo">
+            <img src="assets/icons/brain.svg" alt="Quizzy Logo" class="app-logo-icon">
+            <span class="app-title">Quizzy</span>
+        </div>
+        <div class="header-best-score">
+            <img src="assets/icons/trophy.svg" alt="Trophy" class="icon-small">
+            <span>Best: <strong id="globalBestScore">0%</strong></span>
+        </div>
+    </header>
+
+    <main class="app-container">
+        <!-- WELCOME SCREEN -->
+        <section id="welcomeScreen" class="screen active">
+            <div class="welcome-card card">
+                <div class="welcome-hero">
+                    <img src="assets/icons/brain.svg" alt="Brain Icon" class="hero-logo">
+                    <h1 class="hero-title">Quizzy</h1>
+                    <p class="hero-tagline">Challenge Your Mind. Test Your Knowledge.</p>
+                    <p class="hero-description">
+                        Welcome to Quizzy! Test your knowledge across multiple categories, customize difficulty levels, beat the countdown timer, and elevate your high score.
+                    </p>
+                    <button id="btnStartWelcome" class="btn btn-primary btn-large">
+                        Start Quiz Now
+                    </button>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <img src="assets/icons/target.svg" alt="Target Icon" class="feature-icon">
+                        <h3>Diverse Categories</h3>
+                        <p>Explore General Knowledge, Science, Tech, Sports, and Geography.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="assets/icons/trophy.svg" alt="Trophy Icon" class="feature-icon">
+                        <h3>3 Difficulty Levels</h3>
+                        <p>Customize question complexity: Easy, Medium, or Hard.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="assets/icons/clock.svg" alt="Clock Icon" class="feature-icon">
+                        <h3>Timed Challenges</h3>
+                        <p>Race against the clock to answer before time runs out.</p>
+                    </div>
+                    <div class="feature-item">
+                        <img src="assets/icons/brain.svg" alt="Brain Icon" class="feature-icon">
+                        <h3>Detailed Analysis</h3>
+                        <p>Review answers with explanations and track your high score.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONFIGURATION SCREEN -->
+        <section id="configScreen" class="screen">
+            <div class="config-card card">
+                <h2>Configure Your Quiz</h2>
+                <p class="screen-subtitle">Customize mode, category, difficulty, and question count.</p>
+
+                <div id="configError" class="alert-banner hidden" role="alert"></div>
+
+                <!-- STEP 1: Quiz Mode -->
+                <div class="config-step">
+                    <h3>Step 1: Select Quiz Mode</h3>
+                    <div class="options-grid grid-2">
+                        <div class="selection-card mode-card selected" data-mode="category">
+                            <div class="card-icon-wrap">
+                                <img src="assets/icons/target.svg" alt="Category Mode">
+                            </div>
+                            <div class="card-text">
+                                <h4>Category-Based</h4>
+                                <p>Focus on a specific subject of your choice.</p>
+                            </div>
+                        </div>
+                        <div class="selection-card mode-card" data-mode="random">
+                            <div class="card-icon-wrap">
+                                <img src="assets/icons/brain.svg" alt="Random Mode">
+                            </div>
+                            <div class="card-text">
+                                <h4>Random Mixed</h4>
+                                <p>Questions are selected randomly across all categories.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Category Selection -->
+                <div class="config-step" id="categoryStepContainer">
+                    <h3>Step 2: Select Category</h3>
+                    <div class="options-grid grid-3" id="categoryGrid">
+                        <div class="selection-card category-card selected" data-category="General Knowledge">
+                            <img src="assets/icons/target.svg" alt="General Knowledge" class="card-icon">
+                            <h4>General Knowledge</h4>
+                            <p>History, culture, and trivia.</p>
+                        </div>
+                        <div class="selection-card category-card" data-category="Science">
+                            <img src="assets/icons/science.svg" alt="Science" class="card-icon">
+                            <h4>Science</h4>
+                            <p>Physics, chemistry, biology.</p>
+                        </div>
+                        <div class="selection-card category-card" data-category="Technology">
+                            <img src="assets/icons/tech.svg" alt="Technology" class="card-icon">
+                            <h4>Technology</h4>
+                            <p>Gadgets, AI, digital world.</p>
+                        </div>
+                        <div class="selection-card category-card" data-category="Programming">
+                            <img src="assets/icons/code.svg" alt="Programming" class="card-icon">
+                            <h4>Programming</h4>
+                            <p>Languages, web, algorithms.</p>
+                        </div>
+                        <div class="selection-card category-card" data-category="Sports">
+                            <img src="assets/icons/sports.svg" alt="Sports" class="card-icon">
+                            <h4>Sports</h4>
+                            <p>Games, athletes, tournaments.</p>
+                        </div>
+                        <div class="selection-card category-card" data-category="Geography">
+                            <img src="assets/icons/geo.svg" alt="Geography" class="card-icon">
+                            <h4>Geography</h4>
+                            <p>Countries, capitals, landscapes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Difficulty -->
+                <div class="config-step">
+                    <h3>Step 3: Select Difficulty</h3>
+                    <div class="options-grid grid-3">
+                        <div class="selection-card difficulty-card selected" data-difficulty="Easy">
+                            <span class="badge badge-easy">20 sec/ques</span>
+                            <h4>Easy</h4>
+                            <p>Fundamental questions.</p>
+                        </div>
+                        <div class="selection-card difficulty-card" data-difficulty="Medium">
+                            <span class="badge badge-medium">15 sec/ques</span>
+                            <h4>Medium</h4>
+                            <p>Balanced challenge.</p>
+                        </div>
+                        <div class="selection-card difficulty-card" data-difficulty="Hard">
+                            <span class="badge badge-hard">10 sec/ques</span>
+                            <h4>Hard</h4>
+                            <p>In-depth knowledge test.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Number of Questions -->
+                <div class="config-step">
+                    <h3>Step 4: Number of Questions</h3>
+                    <div class="count-selector-group">
+                        <button type="button" class="btn-count selected" data-count="5">5 Questions</button>
+                        <button type="button" class="btn-count" data-count="10">10 Questions</button>
+                        <button type="button" class="btn-count" data-count="15">15 Questions</button>
+                    </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="config-actions">
+                    <button id="btnBackToHome" class="btn btn-secondary">Home</button>
+                    <button id="btnLaunchQuiz" class="btn btn-primary btn-large">Start Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUESTION SCREEN -->
+        <section id="questionScreen" class="screen">
+            <div class="question-card card">
+                <!-- Meta Info & Timer -->
+                <div class="quiz-header">
+                    <div class="quiz-meta">
+                        <span id="metaCategory" class="meta-pill">General Knowledge</span>
+                        <span id="metaDifficulty" class="meta-pill pill-difficulty">Medium</span>
+                    </div>
+                    <div class="timer-box" id="timerBox">
+                        <img src="assets/icons/clock.svg" alt="Timer" class="timer-icon">
+                        <span id="timerText" class="timer-text">15s</span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="questionCounter">Question 1 of 5</span>
+                        <span id="progressPercent">20%</span>
+                    </div>
+                    <div class="progress-bar-track">
+                        <div id="progressBarFill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <div class="question-body">
+                    <h2 id="questionText" class="question-title">Loading Question...</h2>
+                </div>
+
+                <!-- Options Grid -->
+                <div id="optionsContainer" class="options-container">
+                    <!-- Dynamic Answer Options -->
+                </div>
+
+                <!-- Feedback Banner -->
+                <div id="feedbackBox" class="feedback-box hidden" aria-live="polite">
+                    <div id="feedbackTitle" class="feedback-title">Correct!</div>
+                    <div id="feedbackExplanation" class="feedback-explanation">Explanation goes here...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SCREEN -->
+        <section id="resultsScreen" class="screen">
+            <div class="results-card card">
+                <div id="resultHeadlineBadge" class="result-badge">Excellent Performance!</div>
+                <h2 class="results-title">Quiz Completed</h2>
+
+                <!-- Circular Progress -->
+                <div class="score-ring-container">
+                    <svg class="score-ring-svg" viewBox="0 0 120 120">
+                        <circle class="score-ring-bg" cx="60" cy="60" r="52"></circle>
+                        <circle id="scoreRingProgress" class="score-ring-fg" cx="60" cy="60" r="52"></circle>
+                    </svg>
+                    <div class="score-ring-text">
+                        <span id="resultPercentageText">80%</span>
+                        <small>Score</small>
+                    </div>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-value" id="resScoreText">4 / 5</span>
+                        <span class="metric-label">Final Score</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value text-success" id="resCorrectCount">4</span>
+                        <span class="metric-label">Correct</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value text-danger" id="resIncorrectCount">1</span>
+                        <span class="metric-label">Incorrect/Unanswered</span>
+                    </div>
+                </div>
+
+                <!-- Summary Details -->
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Quiz Mode:</span>
+                        <strong id="resSummaryMode">Category-Based</strong>
+                    </div>
+                    <div class="summary-row" id="resSummaryCategoryRow">
+                        <span>Category:</span>
+                        <strong id="resSummaryCategory">General Knowledge</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Difficulty:</span>
+                        <strong id="resSummaryDifficulty">Medium</strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Best Percentage:</span>
+                        <strong id="resSummaryBest">80%</strong>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="results-actions">
+                    <button id="btnReviewAnswers" class="btn btn-outline">Review Answers</button>
+                    <button id="btnPlayAgain" class="btn btn-primary">Play Again</button>
+                    <button id="btnHomeFromResults" class="btn btn-secondary">Back to Home</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANSWER REVIEW SCREEN -->
+        <section id="reviewScreen" class="screen">
+            <div class="review-card card">
+                <div class="review-header">
+                    <h2>Answer Review</h2>
+                    <p class="screen-subtitle">Examine your performance item by item.</p>
+                </div>
+
+                <div id="reviewList" class="review-list">
+                    <!-- Dynamic review items inserted here -->
+                </div>
+
+                <div class="review-actions">
+                    <button id="btnBackToResults" class="btn btn-outline">Back to Results</button>
+                    <button id="btnRestartFromReview" class="btn btn-primary">Play Again</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Quizzy App.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
