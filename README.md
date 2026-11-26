@@ -77,19 +77,19 @@ Alternatively, open the project folder in Visual Studio Code, right-click `index
 Screenshots of the completed application demonstrate each stage of the user workflow:
 
 ### Welcome Screen
-![Welcome Screen](screenshots/welcomeScreen.png)
+![Welcome Screen](screenshots/welcomeScreen.PNG)
 
 ### Quiz Configuration
-![Quiz Configuration](screenshots/configQuiz.png)
+![Quiz Configuration](screenshots/configQuiz.PNG)
 
 ### Active Question & Timer
-![Active Question & Timer](screenshots/questions.png)
+![Active Question & Timer](screenshots/questions.PNG)
 
 ### Results Dashboard
-![Results Dashboard](screenshots/result.png)
+![Results Dashboard](screenshots/result.PNG)
 
 ### Answer Review
-![Answer Review](screenshots/reviewAnswer.png)
+![Answer Review](screenshots/reviewAnswer.PNG)
 
 ## Conclusion
 This project helped me apply my knowledge of HTML, CSS, and Vanilla JavaScript to build a fully functional, responsive, and stateful web application. It provided hands-on experience in client-side data management, timing operations, dynamic DOM manipulation, responsive UI design, and user experience optimization.
